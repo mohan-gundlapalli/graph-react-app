@@ -1,23 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
+import {PageLayout} from './components/pageLayout'
+import {AuthenticatedTemplate, UnauthenticatedTemplate} from '@azure/msal-react';
+import {TeamsList} from './components/teamsList';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <PageLayout>
+        <AuthenticatedTemplate>
+          <TeamsList />
+        </AuthenticatedTemplate>
+        <UnauthenticatedTemplate>
+          You are not signed in. Please sign in!
+        </UnauthenticatedTemplate>
+      </PageLayout>
     </div>
   );
 }
